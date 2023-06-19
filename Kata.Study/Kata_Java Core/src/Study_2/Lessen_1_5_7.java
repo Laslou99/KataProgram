@@ -6,7 +6,7 @@ import java.util.Enumeration;
 
 public class Lessen_1_5_7 {
     public static void main(String[] args) {
-        int[] arr1 = {};
+        int[] arr1 = {1, 3, 7, 5};
         int[] arr2 = {8, 4, 2, 4};
         int[] END = mergeAndSort(arr1, arr2);
         Arrays.sort(END);
