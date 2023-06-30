@@ -21,32 +21,16 @@ public class Lessen_1_6_12 {
 
 
     public static String printTextPerRole(String[] roles, String[] textLines) {
-        Map<String, List<String>> roleToLines = new HashMap<>();
+        StringBuilder answer = new StringBuilder();
         for (String role : roles) {
-            roleToLines.put(role, new ArrayList<>());
-        }
-        String currentRole = "";
-        for (String textLine : textLines) {
-            int colonIndex = textLine.indexOf(":");
-            String role = textLine.substring(0, colonIndex);
-            String text = textLine.substring(colonIndex + 2); // +2 без учета двоеточия и пробела
-            if (roleToLines.containsKey(role)) {
-                currentRole = role;
-            } else {
-                role = currentRole;
-                text = textLine.trim();
+            answer.append(role + ":\n");
+            for (int i = 0; i < textLines.length; i++) {
+                if (textLines[i].startsWith(role + ":")) {
+                    answer.append((i + 1) + ")" + textLines[i].substring(role.length() + 1) + "\n");
+                }
             }
-            roleToLines.get(role).add(text);
+            answer.append("\n");
         }
-        StringBuilder result = new StringBuilder();
-        for (String role : roles) {
-            result.append(role).append(":\n");
-            List<String> lines = roleToLines.get(role);
-            for (int i = 0; i < lines.size(); i++) {
-                result.append(i + 1).append(") ").append(lines.get(i)).append("\n");
-            }
-            result.append("\n");
-        }
-        return result.toString();
+        return answer.toString();
     }
 }

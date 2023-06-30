@@ -1,8 +1,11 @@
 package Study_2;
 
+import com.sun.jdi.connect.Connector;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.stream.IntStream;
 
 public class Lessen_1_5_7 {
     public static void main(String[] args) {
@@ -14,19 +17,19 @@ public class Lessen_1_5_7 {
     }
 
     public static int[] mergeAndSort(int[] firstArray, int[] secondArray) {
-        int[] result = new int[firstArray.length + secondArray.length];
-        int i = 0, j = 0, k = 0;
-        while (i < firstArray.length && j < secondArray.length) {
-            if (firstArray[i] < secondArray[j]) {
-                result[k++] = firstArray[i++];
-            } else {
-                result[k++] = secondArray[j++];
-            }
+        if(firstArray == null || secondArray == null) throw new IllegalArgumentException();
+        int i = 0, j = i, k = i;
+        var result = new int[firstArray.Length + secondArray.Length];
+        while(i< firstArray.Length && j<secondArray.Length)
+        {
+            result[k++] = firstArray[i] < secondArray[j] ? firstArray[i++] : secondArray[j++];
         }
-        while (i < firstArray.length) {
+        while(i < firstArray.)
+        {
             result[k++] = firstArray[i++];
         }
-        while (j < secondArray.length) {
+        while(j < secondArray.Length)
+        {
             result[k++] = secondArray[j++];
         }
         return result;
